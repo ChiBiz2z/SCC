@@ -6,27 +6,28 @@
         xmlns:local="clr-namespace:SSCWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="5" Grid.Row="0">
-            <Button x:Name="Button1" Content="Select Image 1" Click="Button_Click"/>
-            <Button x:Name="Button2" Content="Select Image 2" Click="Button2_Click"/>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" Margin="20">
+            <Border Background="LightGray" Width="200" Height="200">
+                <Image x:Name="Image1" Width="200" Height="200" />
+            </Border>
+            <Button x:Name="Button1" Content="Select Image 1" Click="Button_Click" Width="100" Height="30" Margin="10" />
         </StackPanel>
-        
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Border Background="LightGray" Margin="10" Grid.Column="0" Width="150" Height="150">
-                <Image x:Name="Image1" Width="150" Height="150"/>
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" Margin="20">
+            <Border Background="LightGray" Width="200" Height="200">
+                <Image x:Name="Image2" Width="200" Height="200" />
             </Border>
-            <Border Background="LightGray" Margin="10" Grid.Column="1" Width="150" Height="150">
-                <Image x:Name="Image2" Width="150" Height="150"/>
+            <Button x:Name="Button2" Content="Select Image 2" Click="Button2_Click" Width="100" Height="30" Margin="10" />
+        </StackPanel>
+        <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" Margin="20">
+            <Border Background="LightGray" Width="200" Height="200">
+                <Image x:Name="Image3" Width="200" Height="200" />
             </Border>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Window>

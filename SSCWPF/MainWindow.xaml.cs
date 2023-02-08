@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
+using System.Drawing;
 
 namespace SSCWPF
 {
@@ -29,22 +19,43 @@ namespace SSCWPF
             {
                 Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"
             };
-            if (openFileDialog.ShowDialog() == true)
-            {
-                Image1.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-            }
+
+            if (openFileDialog.ShowDialog() != true)
+                return;
+
+            using var bitmap = new Bitmap(openFileDialog.FileName);
+            var bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                bitmap.GetHbitmap(),
+                IntPtr.Zero,
+                Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions());
+
+            Image1.Source = bitmapSource;
         }
-        
+
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog
             {
                 Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"
             };
-            if (openFileDialog.ShowDialog() == true)
-            {
-                Image2.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-            }
+            
+            if (openFileDialog.ShowDialog() != true) 
+                return;
+            
+            using var bitmap = new Bitmap(openFileDialog.FileName);
+            var bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                bitmap.GetHbitmap(),
+                IntPtr.Zero,
+                Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions());
+            Image2.Source = bitmapSource;
+        }
+
+
+        private void Colorize(Bitmap map)
+        {
+            
         }
     }
 }
