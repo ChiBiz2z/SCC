@@ -28,6 +28,8 @@
             <Border Background="LightGray" Width="200" Height="200">
                 <Image x:Name="Image3" Width="200" Height="200" />
             </Border>
+            <Button x:Name="Button3" Content="Make magic" Click="Button3_Click" Width="100" Height="30" Margin="10" />
+
         </StackPanel>
     </Grid>
 </Window>
