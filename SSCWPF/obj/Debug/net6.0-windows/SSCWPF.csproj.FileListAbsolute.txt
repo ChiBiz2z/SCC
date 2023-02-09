@@ -19,3 +19,11 @@ D:\KRSU\CG\lab1\SSCWPF\SSCWPF\obj\Debug\net6.0-windows\refint\SSCWPF.dll
 D:\KRSU\CG\lab1\SSCWPF\SSCWPF\obj\Debug\net6.0-windows\SSCWPF.pdb
 D:\KRSU\CG\lab1\SSCWPF\SSCWPF\obj\Debug\net6.0-windows\SSCWPF.genruntimeconfig.cache
 D:\KRSU\CG\lab1\SSCWPF\SSCWPF\obj\Debug\net6.0-windows\ref\SSCWPF.dll
+D:\KRSU\CG\lab1\SSCWPF\SSCWPF\bin\Debug\net6.0-windows\MathNet.Numerics.dll
+D:\KRSU\CG\lab1\SSCWPF\SSCWPF\bin\Debug\net6.0-windows\Microsoft.Win32.SystemEvents.dll
+D:\KRSU\CG\lab1\SSCWPF\SSCWPF\bin\Debug\net6.0-windows\System.Drawing.Common.dll
+D:\KRSU\CG\lab1\SSCWPF\SSCWPF\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\KRSU\CG\lab1\SSCWPF\SSCWPF\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\KRSU\CG\lab1\SSCWPF\SSCWPF\bin\Debug\net6.0-windows\ColorSpaceConverter.dll
+D:\KRSU\CG\lab1\SSCWPF\SSCWPF\bin\Debug\net6.0-windows\ColorSpaceConverter.pdb
+D:\KRSU\CG\lab1\SSCWPF\SSCWPF\obj\Debug\net6.0-windows\SSCWPF.csproj.CopyComplete

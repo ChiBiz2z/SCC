@@ -1,21 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "FDTWZaVOQ85EJkiMLj/MMfd2G8RycxHo4N4MOSFu5dwYINfWf4Zz8VDc9jFfRBAYqUKfkz7qMA7Mir/xtENtng==",
-  "success": false,
+  "dgSpecHash": "jmyctP5pbhN1ymKH1dnMcsU+WLRnF66Bf/PrW2Pd+thrIylg0W0GIsb+oB+/7UihElihd7LYLI2ONlkVLNSFfw==",
+  "success": true,
   "projectFilePath": "D:\\KRSU\\CG\\lab1\\SSCWPF\\SSCWPF\\SSCWPF.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\vvbed\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512",
     "C:\\Users\\vvbed\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\vvbed\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'D:\\KRSU\\CG\\lab1\\SSCWPF\\ColorSpaceConverter\\ColorSpaceConverter.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "D:\\KRSU\\CG\\lab1\\SSCWPF\\ColorSpaceConverter\\ColorSpaceConverter.csproj",
-      "targetGraphs": [
-        "net6.0-windows7.0"
-      ]
-    }
-  ]
+  "logs": []
 }

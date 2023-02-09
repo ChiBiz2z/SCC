@@ -36,29 +36,31 @@ public static class ColorConvertor
                     {
                         lms[i, 0] = lms[i, 0] < 0.01176 ? 0.01176 : lms[i, 0];
                     }
+
                     log10Lms[i] = Math.Log10(lms[i, 0]);
                 }
 
-                var lab = Matrix<double>.Build.DenseOfArray(new[,]
-                          {
-                              { 0.5774, 0, 0 },
-                              { 0, 0.4082, 0 },
-                              { 0, 0, 0.7071 }
-                          })
-                          *
-                          Matrix<double>.Build.DenseOfArray(new double[,]
-                          {
-                              { 1, 1, 1 },
-                              { 1, 1, -2 },
-                              { 1, -1, 0 }
-                          })
-                          *
-                          Matrix<double>.Build.DenseOfArray(new[,]
-                          {
-                              { log10Lms[0] },
-                              { log10Lms[1] },
-                              { log10Lms[2] }
-                          });
+                var lab =
+                    (Matrix<double>.Build.DenseOfArray(new[,]
+                     {
+                         { 0.5774, 0, 0 },
+                         { 0, 0.4082, 0 },
+                         { 0, 0, 0.7071 }
+                     })
+                     *
+                     Matrix<double>.Build.DenseOfArray(new double[,]
+                     {
+                         { 1, 1, 1 },
+                         { 1, 1, -2 },
+                         { 1, -1, 0 }
+                     }))
+                    *
+                    Matrix<double>.Build.DenseOfArray(new[,]
+                    {
+                        { log10Lms[0] },
+                        { log10Lms[1] },
+                        { log10Lms[2] }
+                    });
             }
         }
     }
