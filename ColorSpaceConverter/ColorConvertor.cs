@@ -2,12 +2,13 @@
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Complex.Solvers;
 using MathNet.Numerics.LinearAlgebra.Double;
+using Matrix = System.Drawing.Drawing2D.Matrix;
 
 namespace ColorSpaceConverter;
 
 public static class ColorConvertor
 {
-    public static void RgbToLab(Bitmap image)
+    public static void BitMapRunner(Bitmap image)
     {
         for (int x = 0; x < image.Width; x++)
         {
@@ -15,53 +16,69 @@ public static class ColorConvertor
             {
                 var pixel = image.GetPixel(x, y);
 
-                var lms = Matrix<double>.Build.DenseOfArray(new[,]
-                          {
-                              { 0.3811, 0.5783, 0.0402 },
-                              { 0.1967, 0.7244, 0.0782 },
-                              { 0.0241, 0.1288, 0.8444 }
-                          })
-                          *
-                          Matrix<double>.Build.DenseOfArray(new[,]
-                          {
-                              { pixel.R / 255.0 },
-                              { pixel.G / 255.0 },
-                              { pixel.B / 255.0 }
-                          });
+                var rgb = RgbFromZeroToOne(new[] { pixel.R, pixel.G, pixel.B });
 
-                var log10Lms = new double[3];
-                for (int i = 0; i < 3; i++)
-                {
-                    if (lms[i, 0] == 0)
-                    {
-                        lms[i, 0] = lms[i, 0] < 0.01176 ? 0.01176 : lms[i, 0];
-                    }
+                var lms = RgbToLms(rgb);
 
-                    log10Lms[i] = Math.Log10(lms[i, 0]);
-                }
+                var lab = LmsToLab(lms);
+                var lms2 = LabToLms(lab);
 
-                var lab =
-                    (Matrix<double>.Build.DenseOfArray(new[,]
-                     {
-                         { 0.5774, 0, 0 },
-                         { 0, 0.4082, 0 },
-                         { 0, 0, 0.7071 }
-                     })
-                     *
-                     Matrix<double>.Build.DenseOfArray(new double[,]
-                     {
-                         { 1, 1, 1 },
-                         { 1, 1, -2 },
-                         { 1, -1, 0 }
-                     }))
-                    *
-                    Matrix<double>.Build.DenseOfArray(new[,]
-                    {
-                        { log10Lms[0] },
-                        { log10Lms[1] },
-                        { log10Lms[2] }
-                    });
+
+                var finalRgb = RgbNormalizer(LmsToRgb(lms2));
+
+                image.SetPixel(x, y, Color.FromArgb(finalRgb.R, finalRgb.G, finalRgb.B));
             }
         }
+    }
+
+    public static Matrix<double> RgbToLms(Matrix<double> rgb) => ColorSpaceConstants.RgbToLms.Multiply(rgb);
+
+    public static Matrix<double> LmsToLab(Matrix<double> lms)
+    {
+        for (int i = 0; i < 3; i++)
+            if (lms[i, 0] == 0)
+                lms[i, 0] = lms[i, 0] < 0.01176 ? 0.01176 : lms[i, 0];
+
+        return ColorSpaceConstants.LmsToLab.Multiply(Matrix<double>.Log10(lms));
+    }
+
+    public static Matrix<double> LabToLms(Matrix<double> lab)
+    {
+        var lmsComma = ColorSpaceConstants.LabToLms.Multiply(lab);
+
+        var lms = Matrix<double>.Build.DenseOfArray(new[,]
+        {
+            { Math.Pow(10, lmsComma[0, 0]) },
+            { Math.Pow(10, lmsComma[1, 0]) },
+            { Math.Pow(10, lmsComma[2, 0]) },
+        });
+
+        return lms;
+    }
+
+    public static Matrix<double> LmsToRgb(Matrix<double> lms) => ColorSpaceConstants.LmsToRgb.Multiply(lms);
+
+    public static Matrix<double> RgbFromZeroToOne(byte[] rgb) => Matrix<double>.Build.DenseOfArray(new[,]
+    {
+        { rgb[0] / 255.0 * 0.92157 },
+        { rgb[1] / 255.0 * 0.92157 },
+        { rgb[2] / 255.0 * 0.92157 },
+    });
+
+    public static (byte R, byte G, byte B) RgbNormalizer(Matrix<double> rgb)
+    {
+        var arrRgb = rgb.ToArray();
+        for (int i = 0; i < arrRgb.GetLength(0); i++)
+        {
+            // arrRgb[i, 0] = arrRgb[i, 0] < 0.01176 ? 0.01176 : arrRgb[i, 0];
+            // arrRgb[i, 0] = arrRgb[i, 0] > 0.92157 ? 0.92157 : arrRgb[i, 0];
+            arrRgb[i, 0] *= 255;
+        }
+
+        return (
+            (byte)arrRgb[0, 0],
+            (byte)arrRgb[1, 0],
+            (byte)arrRgb[2, 0]
+        );
     }
 }

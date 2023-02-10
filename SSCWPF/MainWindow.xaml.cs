@@ -60,7 +60,7 @@ namespace SSCWPF
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            ColorConvertor.RgbToLab(_firstImage);
+            ColorConvertor.BitMapRunner(_firstImage);
             var bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                 _firstImage.GetHbitmap(),
                 IntPtr.Zero,
