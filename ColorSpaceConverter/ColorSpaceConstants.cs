@@ -11,7 +11,7 @@ public static class ColorSpaceConstants
     {
         { 0.5774, 0.5774, 0.5774 },
         { 0.4082, 0.4082, -0.8164 },
-        { 0.7071, -0.7071, 0 }
+        { 0.7071, -0.7071, 0.0 }
     });
 
     /// <summary>
@@ -23,8 +23,8 @@ public static class ColorSpaceConstants
     public static Matrix<double> LabToLms => Matrix<double>.Build.DenseOfArray(new[,]
     {
         { 0.5774, 0.4082, 0.7071 },
-        { 0.5774, 0.4082, -1.4142 },
-        { 0.5774, -0.4082, 0 }
+        { 0.5774, 0.4082, -0.7071 },
+        { 0.5774, -0.8164, 0.0 }
     });
 
     /// <summary>
