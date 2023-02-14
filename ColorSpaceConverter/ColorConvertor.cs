@@ -1,34 +1,9 @@
-﻿using System.Drawing;
-using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Complex.Solvers;
-using MathNet.Numerics.LinearAlgebra.Double;
-using Matrix = System.Drawing.Drawing2D.Matrix;
+﻿using MathNet.Numerics.LinearAlgebra;
 
 namespace ColorSpaceConverter;
 
 public static class ColorConvertor
 {
-    public static void BitMapRunner(Bitmap image)
-    {
-        for (int x = 0; x < image.Width; x++)
-        {
-            for (int y = 0; y < image.Height; y++)
-            {
-                var pixel = image.GetPixel(x, y);
-
-                var rgb = RgbFromZeroToOne(new[] { pixel.R, pixel.G, pixel.B });
-
-                var lms = RgbToLms(rgb);
-                var lab = LmsToLab(lms);
-                var lms2 = LabToLms(lab);
-
-                var finalRgb = RgbNormalizer(LmsToRgb(lms2));
-
-                image.SetPixel(x, y, Color.FromArgb(finalRgb.R, finalRgb.G, finalRgb.B));
-            }
-        }
-    }
-
     public static Matrix<double> RgbToLms(Matrix<double> rgb) => ColorSpaceConstants.RgbToLms.Multiply(rgb);
 
     public static Matrix<double> LmsToLab(Matrix<double> lms)

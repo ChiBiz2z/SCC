@@ -60,9 +60,9 @@ namespace SSCWPF
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            ColorConvertor.BitMapRunner(_firstImage);
+            ColorCorrector.ColorCorrection(_firstImage, _secondImage);
             var bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                _firstImage.GetHbitmap(),
+                _secondImage.GetHbitmap(),
                 IntPtr.Zero,
                 Int32Rect.Empty,
                 BitmapSizeOptions.FromEmptyOptions());
