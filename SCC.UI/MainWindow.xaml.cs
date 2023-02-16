@@ -8,7 +8,7 @@ using Microsoft.Win32;
 using SCC.Application;
 using SCC.Application.ColorSpaces;
 
-namespace SSC
+namespace SCC
 {
     public partial class MainWindow : Window
     {
@@ -59,7 +59,7 @@ namespace SSC
         {
             if (HslCb.IsChecked != null && HslCb.IsChecked.Value)
                 ImageContainer.ColorSpaces.Add(new HslColorSpace());
-            
+
             if (LabCb.IsChecked != null && LabCb.IsChecked.Value)
                 ImageContainer.ColorSpaces.Add(new LabColorSpace());
 

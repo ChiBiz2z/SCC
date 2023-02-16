@@ -5,7 +5,7 @@ using ColorSpaceConverter;
 using SCC.Application;
 using SCC.Application.ColorSpaces;
 
-namespace SSC;
+namespace SCC;
 
 public static class ColorCorrectionService
 {
