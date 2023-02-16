@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Statistical color correction" Height="500" Width="1100">
+        Title="Statistical color correction" Height="500" Width="1100"
+        Background="Gainsboro">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -23,7 +24,7 @@
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" Margin=" 10 0">
-                <Border Background="LightGray" Width="200" Height="200">
+                <Border Background="Gray" Width="200" Height="200">
                     <Image x:Name="Image1" Width="200" Height="200" />
                 </Border>
                 <Button x:Name="Button1" Content="Загрузить источник света" Click="Button_Click" Width="200"
@@ -31,7 +32,7 @@
                         Margin="10" />
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" Margin=" 10 0">
-                <Border Background="LightGray" Width="200" Height="200">
+                <Border Background="Gray" Width="200" Height="200">
                     <Image x:Name="Image2" Width="200" Height="200" />
                 </Border>
                 <Button x:Name="Button2" Content="Загрузить целевое изображение" Click="Button2_Click" Width="200"
@@ -39,10 +40,10 @@
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" Margin=" 10 0">
                 <StackPanel Orientation="Horizontal">
-                    <Border Background="LightGray" Width="200" Height="200" Margin="0 0 10 0">
+                    <Border Background="Gray" Width="200" Height="200" Margin="0 0 10 0">
                         <Image x:Name="Image3" Width="200" Height="200" />
                     </Border>
-                    <Border Background="LightGray" Width="200" Height="200">
+                    <Border Background="Gray" Width="200" Height="200">
                         <Image x:Name="Image4" Width="200" Height="200" />
                     </Border>
                 </StackPanel>

@@ -57,11 +57,11 @@ namespace SCC
 
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
-            if (HslCb.IsChecked != null && HslCb.IsChecked.Value)
-                ImageContainer.ColorSpaces.Add(new HslColorSpace());
-
             if (LabCb.IsChecked != null && LabCb.IsChecked.Value)
                 ImageContainer.ColorSpaces.Add(new LabColorSpace());
+
+            if (HslCb.IsChecked != null && HslCb.IsChecked.Value)
+                ImageContainer.ColorSpaces.Add(new HslColorSpace());
 
             if (!ImageContainer.ColorSpaces.Any())
                 return;
